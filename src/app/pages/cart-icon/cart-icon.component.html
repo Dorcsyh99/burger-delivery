@@ -1,0 +1,18 @@
+<mat-icon class="mat-icon" matBadgeSize="small" [matBadge]="3" [matMenuTriggerFor]="menu">shopping_basket</mat-icon>
+<mat-menu class="cart-menu" #menu="matMenu">
+  <div class="items-in-cart">
+    <div class="item">
+      <h4>Sajtburger</h4>
+      <p>1590 Ft.</p>
+    </div>
+    <div class="item">
+      <h4>Sajtburger</h4>
+      <p>1590 Ft.</p>
+    </div>
+    <hr>
+    <h4>Végösszeg: <span>5000 Ft.</span></h4>
+    <button mat-button routerLink="/cart">Pénztárhoz</button>
+  </div>
+
+</mat-menu>
+

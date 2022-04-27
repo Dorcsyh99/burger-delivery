@@ -1,0 +1,67 @@
+.menu-category{
+  margin: 2% 0;
+  hr{
+    background: white;
+    height: 5px;
+    border: none;
+  }
+  h2{
+    font-size: 38px;
+    margin: 2%;
+    font-weight: 800;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+}
+
+.menu-container{
+  margin: 5%;
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  .menu-item{
+    flex-basis: 20%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: 0 2% 1% 0;
+    img{
+      width: 200px;
+    }
+    p{
+      text-align: center;
+      span{
+        font-weight: 800;
+      }
+    }
+    .price{
+      color: var(--yellow);
+      font-weight: 800;
+      font-size: 20px;
+    }
+    div:last-child{
+      display: flex;
+      align-items: center;
+    button{
+      background: var(--yellow);
+      color: white;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      font-size: 12px;
+    }
+  }
+  }
+}
+
+.flex{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  .flex-item{
+    .radio-group{
+      display: flex;
+      flex-direction: column;
+    }
+
+  }
+}

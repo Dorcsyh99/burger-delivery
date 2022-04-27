@@ -1,0 +1,20 @@
+.container{
+  margin: 5% 15%;
+  padding: 3%;
+  h2{
+    font-size: 1.6rem;
+    margin-bottom: 5%;
+  }
+  form{
+    display: flex;
+    flex-direction: column;
+    padding: 0 20%;
+    .btns{
+      margin-top: 5%;
+      button{
+        background-color: var(--yellow);
+        color: white;
+      }
+    }
+  }
+}

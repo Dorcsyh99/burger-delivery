@@ -1,0 +1,42 @@
+.mat-icon{
+  cursor: pointer;
+}
+.cart-menu{
+  width: 500px;
+}
+.items-in-cart{
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  color: black;
+  .item{
+    h4{
+      font-weight: 800;
+      font-size: 20px;;
+    }
+    p{
+      font-size: 18px;
+      float: right;
+    }
+  }
+  hr{
+    height: 5px;
+    border: none;
+    background-color: var(--yellow);
+  }
+  h4{
+    margin-top: 3%;
+    font-size: 20px;
+    font-weight: 800;
+    span{
+      color: var(--yellow);
+    }
+  }
+  button{
+    background: var(--yellow);
+    color: white;
+    font-weight: 600;
+
+  }
+}
+

@@ -1,0 +1,41 @@
+<h3>Kérd menüben!</h3>
+<div class="flex">
+  <div class="flex-item">
+    <h4>Menü mérete:</h4>
+      <mat-radio-group class="radio-group" [(ngModel)]="menuSize">
+        <mat-radio-button class="radio-button" *ngFor="let s of size" [value]="size">
+          {{s}}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <div class="flex-item">
+    <h4>Köret:</h4>
+      <mat-radio-group class="radio-group" [(ngModel)]="menuSide">
+        <mat-radio-button class="radio-button" *ngFor="let s of side" [value]="side">
+          {{s}}
+        </mat-radio-button>
+      </mat-radio-group>
+  </div>
+  <div class="flex-item">
+    <h4>Üdítő:</h4>
+      <mat-radio-group class="radio-group" [(ngModel)]="menuDrink">
+        <mat-radio-button class="radio-button" *ngFor="let d of drink" [value]="drink">
+          {{d}}
+        </mat-radio-button>
+      </mat-radio-group>
+  </div>
+  <div class="flex-item">
+    <h4>Szósz:</h4>
+      <mat-radio-group class="radio-group" [(ngModel)]="menuSauce">
+        <mat-radio-button class="radio-button" *ngFor="let s of sauce" [value]="sauce">
+          {{s}}
+        </mat-radio-button>
+      </mat-radio-group>
+  </div>
+  <button mat-button>Kosárba<mat-icon>shopping_cart</mat-icon></button>
+</div>
+
+
+
+
+

@@ -1,0 +1,29 @@
+<mat-card class="container">
+  <h2>Add meg a címed!</h2>
+  <form [formGroup]="addressForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Irányítószám</mat-label>
+      <input matInput placeholder="Pl. 1111" type="number" formControlName="zip">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Kerület</mat-label>
+      <input matInput placeholder="Pl. 11" type="number" formControlName="city" max="22">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Utca, házszám</mat-label>
+      <input matInput placeholder="Pl. Arany János utca 14." type="text" formControlName="address1">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Lépcsőház, emelet, ajtó</mat-label>
+      <input matInput placeholder="Pl. 3/11" type="text" formControlName="address2">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Egyéb megjegyzés (Kapucsengő, kutya...)</mat-label>
+      <input matInput placeholder="Pl. Kapucsengő: 33" type="text" formControlName="other">
+    </mat-form-field>
+    <div class="btns">
+      <button mat-button *ngIf="cartEmpty">Tovább a fizetéshez</button>
+      <button mat-button *ngIf="!cartEmpty">Tovább a vásárláshoz</button>
+    </div>
+  </form>
+</mat-card>

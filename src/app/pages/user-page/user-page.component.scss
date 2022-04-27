@@ -1,0 +1,25 @@
+.container{
+  margin: 5% 15%;
+  padding: 5%;
+  h1{
+    text-align: center;
+    font-size: 34px;
+    font-weight: 700;
+    margin-bottom: 5%;
+  }
+  .my-data{
+    padding: 3%;
+    display: flex;
+    flex-direction: column;
+    .data-row {
+      padding: 0 30%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      h4{
+        font-weight: 500;
+        font-size: 1rem;
+      }
+    }
+  }
+}
