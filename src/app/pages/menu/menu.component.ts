@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { FormsModule } from '@angular/forms';
+import { FoodService } from 'src/app/shared/services/food.service';
+import { Food } from 'src/app/shared/models/food';
+import { first, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-menu',
@@ -9,7 +11,17 @@ import { FormsModule } from '@angular/forms';
 })
 export class MenuComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+  foods: Food[] = [];
+
+  constructor(public dialog: MatDialog, private foodService: FoodService) { }
+
+  ngOnInit(): void {
+    this.foodService.getAll().pipe(first())
+    .subscribe(foods => {
+      this.foods = foods;
+      console.log(this.foods);
+    });
+  }
 
   openDialog() {
     const dialogRef = this.dialog.open(MealDialog);
@@ -17,9 +29,6 @@ export class MenuComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
-  }
-
-  ngOnInit(): void {
   }
 
 }

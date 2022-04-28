@@ -1,7 +1,7 @@
 <mat-nav-list class="menu-container">
   <span mat-list-item><a routerLink="/main-page">Kezdőlap</a></span>
   <span mat-list-item><a routerLink="/menu">Étlap</a></span>
-  <span mat-list-item><a href="#Restaurants" click="close()">Éttermek</a></span>
+  <span mat-list-item><a href="main-page/#Restaurants" click="close()">Éttermek</a></span>
   <span mat-list-item *ngIf="loggedInUser"><a routerLink="/login" (click)="logout()" >Kilépés</a></span>
   <span mat-list-item *ngIf="!(loggedInUser)"><a routerLink="/login" >Bejelentkezés</a></span>
   <span mat-list-item  *ngIf="!(loggedInUser)"><a routerLink="/signup">Regisztráció</a></span>
