@@ -3,12 +3,14 @@
   padding: 3%;
   h2{
     font-size: 1.6rem;
-    margin-bottom: 5%;
+    margin: 5% 0;
+    text-align: center;
   }
   form{
     display: flex;
     flex-direction: column;
-    padding: 0 20%;
+    justify-content: space-between;
+    padding: 0 10%;
     .btns{
       margin-top: 5%;
       button{

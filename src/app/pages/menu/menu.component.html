@@ -1,78 +1,88 @@
-<div class="menu-category">
-  <hr>
-  <h2>Hamburgerek</h2>
-<h2>{{this.foods[0]}}</h2>
-  <hr>
-</div><div class="menu-container">
-  <mat-card class="menu-item">
-    
-    <img src="../../assets/img/burger.png">
-    <h3>Dupla sajtburger</h3>
-    <p>Szezámos buci, <span>2db 100% marhahúspogácsa</span>, <span>2db cheddar sajt</span>, paradicsom, jégsaláta, uborka, lilahgymalekvár, Burger Szósz, Cheddar sajtszósz</p>
-    <p class="price">1890 Ft.</p>
-    <!--<div>
-      <p>+ Kis hasábburgonya, 0.3l üdítő, választható szósz <span>+ 600 Ft</span></p>
-      <p>+ Nagy hasábbrgyona vagy édesburgonya vagy káposztasaláta,0.5l üdíő, választható szósz.<span>+1000 Ft.</span></p>
-    </div> -->
-    <div>
-      <button mat-button>Kosárba <mat-icon>shopping_cart</mat-icon></button>
-      <button mat-button (click)="openDialog()">Kérd menüben! <mat-icon>menu</mat-icon></button>
-    </div>
-  </mat-card>
-  <mat-card class="menu-item">
-    <img src="../../assets/img/burger.png">
-    <h3>Dupla sajtburger</h3>
-    <p>Szezámos buci, <span>2db 100% marhahúspogácsa</span>, <span>2db cheddar sajt</span>, paradicsom, jégsaláta, uborka, lilahgymalekvár, Burger Szósz, Cheddar sajtszósz</p>
-    <p class="price">1890 Ft.</p>
-    <!--<div>
-      <p>+ Kis hasábburgonya, 0.3l üdítő, választható szósz <span>+ 600 Ft</span></p>
-      <p>+ Nagy hasábbrgyona vagy édesburgonya vagy káposztasaláta,0.5l üdíő, választható szósz.<span>+1000 Ft.</span></p>
-    </div> -->
-    <div>
-      <button mat-button>Kosárba <mat-icon>shopping_cart</mat-icon></button>
-      <button mat-button (click)="openDialog()">Kérd menüben! <mat-icon>menu</mat-icon></button>
-    </div>
-  </mat-card>
-  <mat-card class="menu-item">
-    <img src="../../assets/img/burger.png">
-    <h3>Dupla sajtburger</h3>
-    <p>Szezámos buci, <span>2db 100% marhahúspogácsa</span>, <span>2db cheddar sajt</span>, paradicsom, jégsaláta, uborka, lilahgymalekvár, Burger Szósz, Cheddar sajtszósz</p>
-    <p class="price">1890 Ft.</p>
-    <!--<div>
-      <p>+ Kis hasábburgonya, 0.3l üdítő, választható szósz <span>+ 600 Ft</span></p>
-      <p>+ Nagy hasábbrgyona vagy édesburgonya vagy káposztasaláta,0.5l üdíő, választható szósz.<span>+1000 Ft.</span></p>
-    </div> -->
-    <div>
-      <button mat-button>Kosárba <mat-icon>shopping_cart</mat-icon></button>
-      <button mat-button (click)="openDialog()">Kérd menüben! <mat-icon>menu</mat-icon></button>
-    </div>
-  </mat-card>
-  <mat-card class="menu-item">
-    <img src="../../assets/img/burger.png">
-    <h3>Dupla sajtburger</h3>
-    <p>Szezámos buci, <span>2db 100% marhahúspogácsa</span>, <span>2db cheddar sajt</span>, paradicsom, jégsaláta, uborka, lilahgymalekvár, Burger Szósz, Cheddar sajtszósz</p>
-    <p class="price">1890 Ft.</p>
-    <!--<div>
-      <p>+ Kis hasábburgonya, 0.3l üdítő, választható szósz <span>+ 600 Ft</span></p>
-      <p>+ Nagy hasábbrgyona vagy édesburgonya vagy káposztasaláta,0.5l üdíő, választható szósz.<span>+1000 Ft.</span></p>
-    </div> -->
-    <div>
-      <button mat-button>Kosárba <mat-icon>shopping_cart</mat-icon></button>
-      <button mat-button (click)="openDialog()">Kérd menüben! <mat-icon>menu</mat-icon></button>
-    </div>
-  </mat-card>
-  <mat-card class="menu-item">
-    <img src="../../assets/img/burger.png">
-    <h3>Dupla sajtburger</h3>
-    <p>Szezámos buci, <span>2db 100% marhahúspogácsa</span>, <span>2db cheddar sajt</span>, paradicsom, jégsaláta, uborka, lilahgymalekvár, Burger Szósz, Cheddar sajtszósz</p>
-    <p class="price">1890 Ft.</p>
-    <!--<div>
-      <p>+ Kis hasábburgonya, 0.3l üdítő, választható szósz <span>+ 600 Ft</span></p>
-      <p>+ Nagy hasábbrgyona vagy édesburgonya vagy káposztasaláta,0.5l üdíő, választható szósz.<span>+1000 Ft.</span></p>
-    </div> -->
-    <div>
-      <button mat-button>Kosárba <mat-icon>shopping_cart</mat-icon></button>
-      <button mat-button (click)="openDialog()">Kérd menüben! <mat-icon>menu</mat-icon></button>
-    </div>
-  </mat-card>
+<div class="spinner" *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
+</div>
+<div *ngIf="!isLoading">
+  <div class="menu-category">
+    <hr>
+    <h2>Hamburgerek</h2>
+    <hr>
   </div>
+  <div class="menu-container" >
+    <mat-card class="menu-item" *ngFor="let burger of burgers">
+      <img src="../../assets/img/burger.png">
+      <h3>{{burger.name}}</h3>
+      <p>{{burger.description}}</p>
+      <p class="price">{{burger.price}} Ft.</p>
+      <div>
+        <button mat-button (click)="addToCart(burger.id)">Kosárba<mat-icon>shopping_cart</mat-icon></button>
+      </div>
+      </mat-card>
+    </div>
+    <div class="menu-category">
+      <hr>
+      <h2>Köretek</h2>
+      <hr>
+    </div>
+    <div class="menu-container" >
+      <mat-card class="menu-item" *ngFor="let side of sides">
+        <img src="../../assets/img/fries.png">
+        <h3>{{side.name}}</h3>
+        <p>{{side.description}}</p>
+        <p class="price">{{side.price}} Ft.</p>
+        <div>
+          <button mat-button (click)="addToCart(side.id)">Kosárba<mat-icon>shopping_cart</mat-icon></button>
+        </div>
+        </mat-card>
+      </div>
+    <div class="menu-category">
+      <hr>
+      <h2>Italok</h2>
+      <hr>
+    </div>
+    <div class="menu-container" >
+      <mat-card class="menu-item" *ngFor="let drink of drinks">
+        <img src="../../assets/img/cola.png">
+        <h3>{{drink.name}}</h3>
+        <p>{{drink.description}}</p>
+        <p class="price">{{drink.price}} Ft.</p>
+        <div>
+          <button mat-button (click)="addToCart(drink.id)">Kosárba<mat-icon>shopping_cart</mat-icon></button>
+        </div>
+        </mat-card>
+      </div>
+    <div class="menu-category">
+      <hr>
+      <h2>Desszertek</h2>
+      <hr>
+    </div>
+    <div class="menu-container" >
+      <mat-card class="menu-item" *ngFor="let dessert of desserts">
+        <img src="../../assets/img/pancakes.png">
+        <h3>{{dessert.name}}</h3>
+        <p>{{dessert.description}}</p>
+        <p class="price">{{dessert.price}} Ft.</p>
+        <div>
+          <button mat-button (click)="addToCart(dessert.id)">Kosárba<mat-icon>shopping_cart</mat-icon></button>
+        </div>
+        </mat-card>
+      </div>
+    <div class="menu-category">
+      <hr>
+      <h2>Szószok</h2>
+      <hr>
+    </div>
+    <div class="menu-container" >
+      <mat-card class="menu-item" *ngFor="let sauce of sauces">
+        <img src="../../assets/img/coleslaw.png">
+        <h3>{{sauce.name}}</h3>
+        <p>{{sauce.description}}</p>
+        <p class="price">{{sauce.price}} Ft.</p>
+        <div>
+          <button mat-button (click)="addToCart(sauce.id)">Kosárba<mat-icon>shopping_cart</mat-icon></button>
+        </div>
+        </mat-card>
+      </div>
+
+
+
+</div>

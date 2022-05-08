@@ -1,0 +1,19 @@
+<div class="dialog-content">
+  <h2>Megrendelés véglegesítése</h2>
+  <hr>
+  <h3>Rendelésed összegzése:</h3>
+  <div class="cart-items">
+    <div class="item" *ngFor="let item of this.items">
+      <h3>{{item.name}}</h3>
+      <h4>{{item.description}}</h4>
+      <p>{{item.price}} Ft.</p>
+    </div>
+  </div>
+  <h3>Címed:</h3>
+  <div class="address">
+    <p>{{address?.zip}}, {{address?.district}}<p>
+    <p>{{address?.street}}, {{address?.building}}</p>
+    <p *ngIf="address?.additional">{{address?.additional}}</p>
+  </div>
+  <button mat-button mat-dialog-close>Megrendelem</button>
+</div>

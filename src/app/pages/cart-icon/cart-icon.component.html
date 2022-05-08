@@ -1,18 +1,16 @@
-<mat-icon class="mat-icon" matBadgeSize="small" [matBadge]="3" [matMenuTriggerFor]="menu">shopping_basket</mat-icon>
+<mat-icon class="mat-icon" matBadgeSize="small" [matBadge]=items.length [matMenuTriggerFor]="menu">shopping_basket</mat-icon>
 <mat-menu class="cart-menu" #menu="matMenu">
-  <div class="items-in-cart">
-    <div class="item">
-      <h4>Sajtburger</h4>
-      <p>1590 Ft.</p>
-    </div>
-    <div class="item">
-      <h4>Sajtburger</h4>
-      <p>1590 Ft.</p>
+  <div *ngIf="items.length >= 1" class="items-in-cart">
+    <div class="item" *ngFor="let item of this.items">
+      <h4>{{item.name}}</h4>
+      <p>{{item.price}} Ft.</p>
     </div>
     <hr>
-    <h4>Végösszeg: <span>5000 Ft.</span></h4>
+    <h4>Végösszeg: <span>{{this.summary}}Ft.</span></h4>
     <button mat-button routerLink="/cart">Pénztárhoz</button>
   </div>
-
+  <div class="empty" *ngIf="items.length === 0">
+    <h4>Még üres a kosarad!</h4>
+  </div>
 </mat-menu>
 

@@ -1,9 +1,6 @@
-import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { User} from 'firebase/auth';
+import { User } from '../../shared/models/user';
 import { first } from 'rxjs';
-import { AuthService } from 'src/app/shared/services/auth.service';
 import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
@@ -14,18 +11,28 @@ import { UserService } from 'src/app/shared/services/user.service';
 export class UserPageComponent implements OnInit {
 
   currentUser?: User;
+  allUsers: User[] = [];
 
-  constructor(private fireAuth: AngularFireAuth, private userService: UserService, private authService: AuthService) {
+  constructor(private userService: UserService) {
 
    }
 
   ngOnInit(): void {
-
-
+    this.getAllUsers();
   }
 
-  isLoggedIn(){
-    return this.fireAuth.authState.pipe(first()).toPromise();
+  getAllUsers(){
+    const users = this.userService.getAll().pipe(first());
+    users.subscribe(data => {
+      this.allUsers = data;
+      console.log(data);
+      let id = localStorage.getItem("user");
+      console.log(id);
+      if(id){
+        let user = data.find(x => x.email == id);
+        console.log(user);
+      }
+    })
   }
 
 }

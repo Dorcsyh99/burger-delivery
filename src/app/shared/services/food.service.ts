@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFirestore, Query } from '@angular/fire/compat/firestore';
 import { Food } from '../models/food';
 
 @Injectable({
@@ -30,5 +30,6 @@ export class FoodService {
   delete(id: string) {
     return this.afs.collection<Food>(this.collectionName).doc(id).delete();
   }
+
 }
 

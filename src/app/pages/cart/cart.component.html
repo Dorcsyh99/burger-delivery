@@ -2,36 +2,25 @@
   <h2>Kosár</h2>
   <hr>
   <div class="elements">
-    <div class="element">
+    <div *ngFor="let item of items" class="element">
       <img src="../../assets/img/burger.png">
       <div class="middle">
-        <h3>Termék neve</h3>
-        <h4>Leírás</h4>
+        <h3>{{item.name}}</h3>
+        <h4>{{item.description}}</h4>
       </div>
       <div class="end">
-        <a>Törlés</a>
-        <p>1590 Ft.</p>
-      </div>
-    </div>
-    <div class="element">
-      <img src="../../assets/img/burger.png">
-      <div class="middle">
-        <h3>Termék neve</h3>
-        <h4>Leírás</h4>
-      </div>
-      <div class="end">
-        <a>Törlés</a>
-        <p>1590 Ft.</p>
+        <a (click)="deleteItem(item)">Törlés</a>
+        <p>{{item.price}} Ft.</p>
       </div>
     </div>
   </div>
   <hr>
   <div class="summary">
     <h4>Végösszeg:</h4>
-    <h3>4000 Ft.</h3>
+    <h3>{{this.summary}} Ft.</h3>
   </div>
-  <div class="btns">
-    <button mat-button>Fizetés</button>
-    <button mat-button>Kosár kiürítése</button>
+  <div class="btns" *ngIf="this.items.length >= 1">
+    <a routerLink="/address-form"><button  mat-button >Fizetés</button></a>
+    <button mat-button (click)="clearCart()">Kosár kiürítése</button>
   </div>
 </mat-card>

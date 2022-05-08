@@ -1,73 +1,71 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { FoodService } from 'src/app/shared/services/food.service';
 import { Food } from 'src/app/shared/models/food';
-import { first, Observable } from 'rxjs';
+import { first } from 'rxjs';
+import { Cart } from 'src/app/shared/models/cart';
+import { CartService } from 'src/app/shared/services/cart.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent implements OnInit, AfterViewInit {
+
+  @Output() badge: number = 0;
+  @Output() myCart?: Cart;
+
+  isLoading: boolean = true;
 
   foods: Food[] = [];
+  burgers: Food[] = [];
+  sides: Food[] = [];
+  drinks: Food[] = [];
+  desserts: Food[] = [];
+  sauces: Food[] = [];
 
-  constructor(public dialog: MatDialog, private foodService: FoodService) { }
+  constructor(public dialog: MatDialog, private foodService: FoodService, private cartService: CartService, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.foodService.getAll().pipe(first())
     .subscribe(foods => {
       this.foods = foods;
       console.log(this.foods);
+      this.burgers = this.sortByCategory("burger");
+      this.sides = this.sortByCategory("side");
+      this.drinks = this.sortByCategory("drink");
+      this.desserts = this.sortByCategory("dessert");
+      this.sauces = this.sortByCategory("sauce");
     });
+
   }
 
-  openDialog() {
-    const dialogRef = this.dialog.open(MealDialog);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+  ngAfterViewInit(): void {
+    this.isLoading = false;
   }
 
-}
+  sortByCategory(category: string){
+    let items: Food[] = [];
+    this.foods.forEach(f => {
+      if(f.category == category){
+        items.push(f);
+      }
+    });
+    items.sort((a, b) => a.price - b.price);
 
-@Component({
-  selector: 'meal-dialog',
-  templateUrl: './meal-dialog.html',
-  styleUrls: ['./menu.component.scss']
-})
-export class MealDialog {
-  menuSize: string = "";
-  menuSide: string = "";
-  menuDrink: string = "";
-  menuSauce: string = "";
-  size: string [] = ["Kicsi", "Nagy"];
-  side: string[] = [
-    "Hasábburgonya",
-    "Édesburgonya",
-    "Káposztasaláta",
-    "Friss, kertész saláta"
-  ];
-  drink: string[] = [
-    "Coca cola",
-    "Fanta narancs",
-    "Fanta citrom",
-    "Sprite",
-    "Lipton citrom",
-    "Lipton barack",
-    "Lipton zöld",
-    "Dr. pepper",
-    "Kinley gyömbér"
-  ];
-  sauce: string[] = [
-    "Ketchup",
-    "Fokhagymá-majonéz",
-    "Burger szósz",
-    "BBQ szósz",
-    "Cheddar sajtszósz",
-    "Remulád mártás"
-  ];
+    return items;
+  }
+
+  addToCart(id: string){
+    const food = this.foods.find(f => f.id === id);
+    console.log(food);
+    if(food){
+      this.cartService.addToCart(food)
+      this.snackBar.open("Sikeresen hozzáadva a kosárhoz!", "Ok");
+    }
+  }
 
 }

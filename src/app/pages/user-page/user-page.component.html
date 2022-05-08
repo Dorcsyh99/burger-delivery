@@ -1,23 +1,23 @@
 <mat-card class="container">
-  <h1>Üdvözlünk, <span>User!</span></h1>
+  <h1>Üdvözlünk!</h1>
   <mat-tab-group dynamicHeight>
     <mat-tab label="Adataim" >
       <div class="my-data">
         <div class="data-row">
           <h4>Felhasználónév:</h4>
-          <p>Dorottya</p>
+          <p>{{this.currentUser?.userName}}</p>
         </div>
         <div class="data-row">
           <h4>E-mail cím:</h4>
-          <p>dorottya@gmail.com</p>
+          <p></p>
         </div>
         <div class="data-row">
           <h4>Cím:</h4>
-          <p>1123 Budapest, Győri út 14.</p>
+          <p></p>
         </div>
         <div class="data-row">
           <h4>Telefonszám:</h4>
-          <p>+36 20 435/8748</p>
+          <p></p>
         </div>
       </div>
     </mat-tab>

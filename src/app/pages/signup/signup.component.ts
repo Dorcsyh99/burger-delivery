@@ -35,7 +35,7 @@ export class SignupComponent implements OnInit {
         userName: this.signUpForm.get('userName')?.value,
         phone: this.signUpForm.get('phone')?.value
       };
-      localStorage.setItem("currentUid", user.id);
+      localStorage.setItem("user", user.email as string);
       this.userService.create(user).then(_ => {
         console.log("User added successfully");
         this.router.navigateByUrl('/user-page');

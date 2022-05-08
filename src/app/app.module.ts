@@ -11,7 +11,6 @@ import { CartIconComponent } from './pages/cart-icon/cart-icon.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MealDialog } from './pages/menu/menu.component';
 
 
 import { MatButtonModule} from '@angular/material/button';
@@ -40,8 +39,7 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
   declarations: [
     AppComponent,
     NavbarComponent,
-    CartIconComponent,
-    MealDialog,
+    CartIconComponent
   ],
   imports: [
     BrowserModule,

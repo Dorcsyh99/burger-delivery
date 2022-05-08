@@ -1,14 +1,5 @@
 {
   "projects": {
     "default": "burger-delivery-app-a5a51"
-  },
-  "targets": {
-    "burger-delivery-app-a5a51": {
-      "hosting": {
-        "burger-delivery-app": [
-          "burger-delivery-app-a5a51"
-        ]
-      }
-    }
   }
 }

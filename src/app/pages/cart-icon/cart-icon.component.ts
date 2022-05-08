@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Food } from 'src/app/shared/models/food';
+import { CartService } from 'src/app/shared/services/cart.service';
 
 @Component({
   selector: 'app-cart-icon',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartIconComponent implements OnInit {
 
-  constructor() { }
+  items: Food[] = [];
+  summary: number;
+
+  constructor(private cartService: CartService) {
+    this.summary = cartService.getSummary();
+   }
 
   ngOnInit(): void {
+    this.items = this.cartService.getItems();
+    /*this.items.forEach(item => {
+      this.summary += item.price;
+    });*/
   }
+
 
 }
